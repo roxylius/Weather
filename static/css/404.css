@@ -11,7 +11,7 @@ body {
 
 body::after {
   content: "";
-  background: url("https://ae01.alicdn.com/kf/HTB1I_FvOXXXXXXCaFXXq6xXFXXX7/Fuga-de-Rick-e-Morty-Hot-Anima-o-Dos-Desenhos-Animados-Poster-Retro-Do-Vintage-Da.jpg")
+  background: url("/images/rmbg.jpg")
     no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;

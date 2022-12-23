@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const https = require('https');
 const path = require('path');
+require("dotenv").config();
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -16,7 +17,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
     let query = req.query.location || "London";
-    const apiKey = "e83b3c4c08285bf87b99f9bbc0abe3f0";
+    const apiKey = process.env.API_KEY;
     const unit = "metric";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&lang=en&units=${unit}&appid=${apiKey}`;
 
@@ -29,8 +30,8 @@ app.get('/', function (req, res) {
         } else {
             response.on('data', function (data) {
                 const weatherData = JSON.parse(data);
-                const temprature = weatherData.main.temp.toString();
-                const temp = `${temprature[0]}${temprature[1]}`;
+                const temprature = Math.floor(weatherData.main.temp);
+                const temp = temprature.toString();
                 const humidity = weatherData.main.humidity;
                 var miniDescription = weatherData.weather[0].main;
                 const icon = weatherData.weather[0].icon;
@@ -52,7 +53,7 @@ app.get('/', function (req, res) {
 
 // app.post('/', function (req, res) {
 //     const query = req.body.location;
-//     const apiKey = "e83b3c4c08285bf87b99f9bbc0abe3f0";
+//     const apiKey = process.env.API_KEY;
 //     const unit = "metric";
 //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&lang=en&units=${unit}&appid=${apiKey}`;
 

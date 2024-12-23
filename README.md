@@ -37,3 +37,6 @@ To run the project, use the following command:
 ```
 npm start
 ```
+
+## Preview:
+![image](https://github.com/user-attachments/assets/665fef2d-edf3-4940-9355-305e572f7001)
